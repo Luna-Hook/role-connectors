@@ -1,0 +1,30 @@
+name: RoleConnectors
+version: 1.1.0
+main: com.roleconnectors.RoleConnectorsPlugin
+api-version: '1.21'
+depend: [LuckPerms]
+author: Luna Hook
+description: Bidirectional Discord role to Minecraft LuckPerms group sync
+
+commands:
+  link:
+    description: Link your Discord account to your Minecraft account
+    usage: /<command>
+    permission: roleconnectors.link
+  unlink:
+    description: Unlink your Discord account from your Minecraft account
+    usage: /<command>
+    permission: roleconnectors.link
+  roleconnectors:
+    description: Admin command for RoleConnectors
+    usage: /<command> reload
+    permission: roleconnectors.admin
+    aliases: [rc]
+
+permissions:
+  roleconnectors.link:
+    description: Allows using /link and /unlink
+    default: true
+  roleconnectors.admin:
+    description: Allows using /roleconnectors admin commands
+    default: op

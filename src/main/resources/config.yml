@@ -1,0 +1,66 @@
+# v1.1.0
+# =============================================================================
+# RoleConnectors Configuration
+# =============================================================================
+# Bidirectional sync between Discord roles and Minecraft LuckPerms groups.
+# The bot runs embedded within the Paper server (JDA).
+# =============================================================================
+
+discord:
+  # Your Discord bot token from https://discord.com/developers/applications
+  bot-token: "YOUR_BOT_TOKEN_HERE"
+
+# =============================================================================
+# Guild Configuration
+# =============================================================================
+# Each key is a Discord Guild (server) ID.
+# Under each guild, define connectors mapping Discord role names to
+# LuckPerms group names.
+#
+# Direction options:
+#   BOTH                  - Sync both ways (default)
+#   DISCORD_TO_MINECRAFT  - Only Discord role → Minecraft group
+#   MINECRAFT_TO_DISCORD  - Only Minecraft group → Discord role
+#
+# Example:
+# guilds:
+#   "123456789012345678":
+#     connectors:
+#       "VIP":
+#         group: "vip"
+#         direction: "BOTH"
+# =============================================================================
+guilds: {}
+
+# =============================================================================
+# Linking Settings
+# =============================================================================
+# Players must link their Discord account to their Minecraft account for
+# sync to work. The command-based method generates a verification code
+# in-game that the player DMs to the bot.
+# =============================================================================
+linking:
+  # How long a verification code is valid (in seconds)
+  verify-code-timeout: 300
+  # Storage method: "json" (default) or "sqlite"
+  store: "json"
+
+# =============================================================================
+# Sync Settings
+# =============================================================================
+settings:
+  # Sync Minecraft groups → Discord roles when a player joins
+  sync-on-join: true
+
+  # Sync Discord roles → Minecraft groups when the bot starts
+  # WARNING: This will modify ALL linked players' LuckPerms groups
+  sync-on-bot-start: false
+
+  # Remove the LuckPerms group when the corresponding Discord role is removed
+  remove-group-on-role-remove: true
+
+  # Remove the Discord role when the corresponding LuckPerms group is removed
+  remove-role-on-group-remove: true
+
+  # Log all sync actions to console
+  log-sync-actions: true
